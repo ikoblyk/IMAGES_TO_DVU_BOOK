@@ -3,64 +3,62 @@ from selenium import webdriver
 import subprocess, sys
 
 
+class Work():
+    def __init__(self, path:str, url:str):
+        self.driverLocation = '/usr/bin/chromedriver'
+        self.driver = webdriver.Chrome(self.driverLocation)
+        self.path_to_save = path
+        self.url = url
+        self.driver.get(self.url)
+        self.m = self.get_src_original()
+        self.size = self.driver.find_element_by_xpath('//tr[@valign="center"]/td[4][1]').text[1:]
 
-driverLocation = '/usr/bin/chromedriver'
-driver = webdriver.Chrome(driverLocation)
-path_to_save = '/home/ivan/Documents/Vovk'
+    def write_djvu(self, name):
+        print("starting ...")
+        subprocess.Popen(f'/home/ivan/jpg_to_djvu.sh {name}',cwd=self.path_to_save, shell=True)
 
+    def connect(self):
+        self.driver.get(self.url)
 
-def write_djvu(name):
-    print("starting ...")
-    subprocess.Popen(f'/home/ivan/jpg_to_djvu.sh {name}',cwd=path_to_save, shell=True)
-    print("All Done!")
+    def get_src_original(self):
+        img = self.driver.find_element_by_xpath('//center/div//img')
+        src = img.get_attribute('src')
+        modif = src.split('/')
+        modif = modif[:len(modif)-1]
+        return modif
 
-def connect():
-    driver.get('https://elib.nlu.org.ua/view.html?&id=10930')
+    def name_of_file(self):
+        temp = self.driver.find_element_by_xpath('//body//div[2]//a').text.split(' ')
+        return '_'.join(temp)
 
-# get the image source
-def get_src_original():
-    img = driver.find_element_by_xpath('//center/div//img')
-    src = img.get_attribute('src')
-    modif = src.split('/')
-    modif = modif[:len(modif)-1]
-    return modif
+    def main(self, num):
+        try:
+            name = None
+            if num < 10:
+                name = f'000{num}.jpg'
+            elif num >= 10 and num < 100:
+                name = f'00{num}.jpg'
+            elif num >= 100 and num <= 1000:
+                name = f'0{num}.jpg'
+            self.m.append(name)
+            src = "/".join(self.m)
+            self.m.pop()
 
-def size():
-    a =driver.find_element_by_xpath('//tr[@valign="center"]/td[4][1]').text[1:]
-    return a
+            print("Downloading" + " " + src)
 
-def name_of_file():
-    temp = driver.find_element_by_xpath('//body//div[2]//a').text.split(' ')
-    return '_'.join(temp)
+            urllib.request.urlretrieve(src, f"{self.path_to_save}/{name}")
 
+        except:
+            print("too much requests")
 
-def main(num):
-    try:
-        m = get_src_original()
-        name = None
-        if num < 10:
-            name = f'000{num}.jpg'
-        elif num >= 10 and num < 100:
-            name = f'00{num}.jpg'
-        elif num >= 100 and num <= 1000:
-            name = f'0{num}.jpg'
-        m.append(name)
-        src = "/".join(m)
-        m.pop()
+    def run(self):
+        for  i in range(1,int(self.size)+1):
+            self.main(i)
 
-        print("Downloading"+" "+src)
-
-        urllib.request.urlretrieve(src, f"{path_to_save}/{name}")
-
-
-    except:
-        print("too much requests")
+        self.write_djvu(self.name_of_file())
+        self.driver.close()
+        return True
 
 if __name__ == '__main__':
-    connect()
-    a = int(size())
-    for  i in range(1,a+1):
-        main(i)
-
-    write_djvu(name_of_file())
-    driver.close()
+    w = Work('/home/ivan/Documents/Vovk', 'https://elib.nlu.org.ua/view.html?&id=10939')
+    w.run()
