@@ -60,5 +60,5 @@ class Work():
         return True
 
 if __name__ == '__main__':
-    w = Work('/home/ivan/Documents/Vovk', 'https://elib.nlu.org.ua/view.html?&id=10939')
+    w = Work('/../', '/../')
     w.run()
