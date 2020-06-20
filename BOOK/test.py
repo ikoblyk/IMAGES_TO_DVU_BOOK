@@ -15,7 +15,7 @@ class Work():
 
     def write_djvu(self, name):
         print("starting ...")
-        subprocess.Popen(f'/home/ivan/PycharmProjects/BOOK/BOOKjpg_to_djvu.sh {name}',cwd=self.path_to_save, shell=True)
+        subprocess.Popen(f'/home/ivan/PycharmProjects/BOOK/BOOK/jpg_to_djvu.sh {name}',cwd=self.path_to_save, shell=True)
 
     def connect(self):
         self.driver.get(self.url)
@@ -58,4 +58,3 @@ class Work():
         self.write_djvu(self.name_of_file())
         self.driver.close()
         return True
-
