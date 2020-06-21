@@ -1,8 +1,0 @@
-README.md
-setup.cfg
-setup.py
-bookhack_ikoblyk.egg-info/PKG-INFO
-bookhack_ikoblyk.egg-info/SOURCES.txt
-bookhack_ikoblyk.egg-info/dependency_links.txt
-bookhack_ikoblyk.egg-info/requires.txt
-bookhack_ikoblyk.egg-info/top_level.txt
