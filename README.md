@@ -5,21 +5,20 @@ Tool for automated downloading of books from 'Culture of Ukraine' library.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use [docker-compose](https://docs.docker.com/compose/) to set up the environment and install the package.
 
 ```bash
-pip install 
+docker-compose up
 ```
 
 ## Usage
+When container starts you will be asked to enter the book url 
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+#####Make sure you enter a valid url
 ```
+paste a valid url: 
+```
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
