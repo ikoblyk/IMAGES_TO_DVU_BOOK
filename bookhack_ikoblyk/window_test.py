@@ -85,3 +85,4 @@ class Window:
         if self.e1.index("end") != 0:
             self.url_text = self.e1.get()
             print(self.url_text)
+
