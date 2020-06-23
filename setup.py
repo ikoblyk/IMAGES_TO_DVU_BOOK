@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bookhack_ikoblyk",
-    version="0.0.3",
+    version="0.0.5",
     author="Ivan Koblyk",
     author_email="ivankob.16@gmail.com",
     description="Book downloading tool",
@@ -18,7 +18,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: POSIX :: Linux",
     ],
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     install_requires = [
         'Cython==0.29.14',
         'selenium==3.141.0',

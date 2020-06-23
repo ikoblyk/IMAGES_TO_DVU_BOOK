@@ -1,3 +1,10 @@
-FROM robcherry/docker-chromedriver:latest
-RUN mkdir -p /home/automation/app && chown -R automation:automation /home/automation/app &&  apt-get update
-#RUN  apt-get install -y make build-essential libssl-dev zlib1g-dev &&  apt-get install -y libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm &&  apt-get install -y libncurses5-dev  libncursesw5-dev xz-utils tk-dev && wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz && tar xvf Python-3.6.4.tgz && cd Python-3.6.4 && ./configure --enable-optimizations && make -j8 &&  make altinstall
+FROM selenium/standalone-chrome:latest
+RUN sudo mkdir -p /home/automation/app && sudo apt-get update
+COPY bookhack_ikoblyk/jpg_to_djvu.sh /home/automation/app
+WORKDIR /home/automation/app
+RUN sudo chmod +x jpg_to_djvu.sh
+USER root
+RUN sudo apt-get install -y python3-distutils
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py
+RUN pip3 install bookhack-ikoblyk==0.0.5
