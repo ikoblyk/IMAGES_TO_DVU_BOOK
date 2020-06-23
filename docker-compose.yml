@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ikoblyk/bookhack
+    image: ikoblyk/bookhack:native
     volumes:                                  # the default directory for downloads is the project's directory
       - /books:/home/automation/app/books     # you can specify whatever directory you want the books to be stored on the host machine
     command: ./run.py
