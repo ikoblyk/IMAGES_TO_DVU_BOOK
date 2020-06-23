@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bookhack_ikoblyk",
-    version="0.0.5",
+    version="0.1.0",
     author="Ivan Koblyk",
     author_email="ivankob.16@gmail.com",
     description="Book downloading tool",
