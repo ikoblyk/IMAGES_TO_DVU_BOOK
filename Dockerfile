@@ -7,6 +7,5 @@ RUN sudo chmod +x jpg_to_djvu.sh
 USER root
 RUN sudo apt-get install -y python3-distutils
 RUN wget https://bootstrap.pypa.io/get-pip.py
-RUN python3 get-pip.py && sudo apt-get install -y python3-tk libxext-dev libxrender-dev libxtst-dev
+RUN python3 get-pip.py && sudo apt-get install -y python3-tk libxext-dev libxrender-dev libxtst-dev djvulibre-bin netpbm imagemagick
 RUN pip3 install bookhack-ikoblyk==0.1.1
-RUN sudo chmod +x run.py

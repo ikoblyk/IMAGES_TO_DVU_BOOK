@@ -4,7 +4,7 @@ import subprocess, sys
 
 
 class Work():
-    def __init__(self, url, path='/home/automation/app/books'):
+    def __init__(self, url, path):
         self.driverLocation = '/usr/bin/chromedriver'
         self.driver = webdriver.Chrome(self.driverLocation)
         self.path_to_save = path
