@@ -22,6 +22,6 @@ setuptools.setup(
     install_requires = [
         'Cython==0.29.14',
         'selenium==3.141.0',
-        'urllib3==1.25.7',
+        'urllib3==1.26.5',
     ],
 )
